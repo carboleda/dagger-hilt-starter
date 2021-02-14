@@ -62,3 +62,38 @@ Example about how to setup and implement Dagger Hilt in order to understand the 
     @HiltAndroidApp
     class MyApplication : Application()
     ```
+
+    ```xml
+    <application
+        ...
+        android:name=".MyApplication">
+    ```
+
+1. Create Module and define providers
+    ```kotlin
+    @Module
+    @InstallIn(ActivityComponent::class, ViewModelComponent::class)
+    object PizzaModule {
+        ...
+    }
+    ```
+
+1. Refactor ViewModel to be able of receive injected dependencies
+    ```kotlin
+    @HiltViewModel
+    class MainViewModel @Inject constructor(
+        @Named("Hawaiana") private val pizzaHawaiana: Pizza,
+        @Named("Peperoni") private val pizzaPeperoni: Pizza
+    ) : ViewModel() {
+    ```
+
+1. Refactor MainActivity to be able of receive injected dependencies
+    ```kotlin
+    @AndroidEntryPoint
+    class MainActivity : AppCompatActivity() {
+
+        private lateinit var binding: ActivityMainBinding
+        private val mainViewModel: MainViewModel by viewModels()
+        ...
+    }
+    ```

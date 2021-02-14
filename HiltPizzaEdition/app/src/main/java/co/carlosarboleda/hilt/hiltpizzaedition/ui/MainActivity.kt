@@ -2,14 +2,17 @@ package co.carlosarboleda.hilt.hiltpizzaedition.ui
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.carlosarboleda.hilt.hiltpizzaedition.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mainViewModel: MainViewModel
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
@@ -17,8 +20,6 @@ class MainActivity : AppCompatActivity() {
             binding = ActivityMainBinding.inflate(layoutInflater)
             val view = binding.root
             setContentView(view)
-
-            mainViewModel = MainViewModel()
 
             binding.btnHawaiana.setOnClickListener { mainViewModel.pizzaHawaiana() }
             binding.btnPeperoni.setOnClickListener { mainViewModel.pizzaPeperoni() }
