@@ -2,6 +2,6 @@
     <string name="app_name">Hilt Pizza Edition</string>
     <string name="hawaiana">Hawaiana</string>
     <string name="peperoni">Peperoni</string>
-    <string name="icons_copyright">Iconos diseñados por Freepik from Flaticon</string>
+    <string name="icons_copyright">Icons designed by Freepik from Flaticon</string>
     <string name="ingredient_text">%1$s (%2$d g)</string>
 </resources>
